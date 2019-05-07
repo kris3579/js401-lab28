@@ -1,7 +1,8 @@
 import React from 'react';
+import uuid from 'uuid';
 
-import NoteCreateForm from './NoteCreateForm/NoteCreateForm';
-import NoteList from './NoteList/NoteList';
+import NoteCreateForm from '../NoteCreateForm/NoteCreateForm';
+import NoteList from '../NoteList/NoteList';
 
 export default class Dashboard extends React.Component {
     constructor(props) {
@@ -11,8 +12,8 @@ export default class Dashboard extends React.Component {
         this.state.notes = [];
     };
 
-    handleAddNote = note => {
-        note.id = Math.random();
+    handleAddNote = (note) => {
+        note.id = uuid();
         note.createdOn = new Date();
 
         this.setState((previousState) => {
@@ -47,6 +48,7 @@ export default class Dashboard extends React.Component {
                 />
                 <NoteList
                     notes={this.state.notes}
+                    handleAddNote={this.handleAddNote}
                     handleRemoveNote={this.handleRemoveNote}
                     handleUpdateNote={this.handleUpdateNote}
                 />
