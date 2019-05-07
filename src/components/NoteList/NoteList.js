@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import NoteItem from './NoteItem/NoteItem';
+import NoteItem from '../NoteItem/NoteItem';
 
 export default class NoteList extends React.Component {
     render() {
@@ -15,6 +15,7 @@ export default class NoteList extends React.Component {
                                 <NoteItem
                                     currentNote={currentNote}
                                     key={currentNote.id}
+                                    handleAddNote={this.props.handleAddNote}
                                     handleRemoveNote={this.props.handleRemoveNote}
                                     handleUpdateNote={this.props.handleUpdateNote}
                                 />
@@ -29,6 +30,7 @@ export default class NoteList extends React.Component {
 
 NoteList.propTypes = {
     notes: PropTypes.array,
+    handleAddNote: PropTypes.func,
     handleRemoveNote: PropTypes.func,
     handleUpdateNote: PropTypes.func,
 };
